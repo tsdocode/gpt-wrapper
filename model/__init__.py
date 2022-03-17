@@ -10,6 +10,7 @@ class GPTModel():
         else:
             model_name = f"EleutherAI/gpt-neo-125M"
             self.model = HappyGeneration("GPT-NEO" , model_name)
+        self.train = self.model.train
         print('Loading model...')
         
 
