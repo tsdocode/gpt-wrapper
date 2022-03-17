@@ -1,7 +1,5 @@
-from happytransformer import HappyGeneration, GENTrainArgs
-from Wrapper import dataset
+from happytransformer import HappyGeneration
 from utils import default_preprocessing, default_posprocessing
-from dataset.squad import SquadDataset
 
 
 class GPTModel():
