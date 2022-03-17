@@ -31,7 +31,7 @@ class SquadDataset():
                             context, question, answer
                         )
                 except Exception as e:
-                    print('Please check json structure')
+                    pass
         return txt_data
 
     def save_txt(self, path_to_txt: str):
