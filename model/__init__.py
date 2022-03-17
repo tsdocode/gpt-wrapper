@@ -7,9 +7,8 @@ class GPTModel():
         if model_path:
             self.model = HappyGeneration(load_path=model_path)
         else:
-            self.model = HappyGeneration("GPT-NEO" , f"EleutherAI/gpt-neo-{model_version}")
-
-
+            model_name = f"EleutherAI/gpt-neo-125M"
+            self.model = HappyGeneration("GPT-NEO" , model_name)
 
     def save(self, path_to_model: str):
         self.model.save(path_to_model)
