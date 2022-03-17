@@ -14,7 +14,7 @@ class GPTModel():
     def save(self, path_to_model: str):
         self.model.save(path_to_model)
 
-    def generate(self, context: str, question: str , preprocessing : function = default_preprocessing , postprocessing: function = default_posprocessing):
+    def generate(self, context: str, question: str , preprocessing  = default_preprocessing , postprocessing = default_posprocessing):
         prompt = preprocessing(context , question)
         result = self.model.generate_text(prompt).text
         return postprocessing(result)
