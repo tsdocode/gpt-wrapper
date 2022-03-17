@@ -4,11 +4,14 @@ from utils import default_preprocessing, default_posprocessing
 
 class GPTModel():
     def __init__(self, model_version: str = '125M' , model_path : str = None)-> None : 
+        print('Loading model...')
         if model_path:
             self.model = HappyGeneration(load_path=model_path)
         else:
             model_name = f"EleutherAI/gpt-neo-125M"
             self.model = HappyGeneration("GPT-NEO" , model_name)
+        print('Loading model...')
+        
 
     def save(self, path_to_model: str):
         self.model.save(path_to_model)
