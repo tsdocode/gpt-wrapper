@@ -28,6 +28,11 @@ Sample data format
             'question' : "",
             'sql' : ""
         },
+        {
+            'schema' : "",
+            'question' : "",
+            'sql' : ""
+        }
 
     ]
 }
