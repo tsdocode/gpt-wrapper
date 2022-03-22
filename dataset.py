@@ -31,8 +31,26 @@ class GPTDataset(object):
                 pass
         # print(txt_data[:300])
         return txt_data
+    def save_txt(self, file_name):
+        txt_data = self.to_txt()
+        with open(file_name, 'w') as f:
+            f.write(txt_data)
+        return file_name
 
 if __name__ == '__main__':
-    test = GPTDataset('./test.json')
-    # print(test.make_prompt(schema = '2' , question = '3', sql='4'))
-    print(test.to_txt())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--input-file", help="Input json file", type=str)
+    parser.add_argument("-o", "--output-file", help="Output txt file", type=str)
+    
+    args = parser.parse_args()
+    path_to_json = ""
+
+    if args.input_file:
+        path_to_json = args.input_file
+        dataset = GPTDataset(path_to_json)
+    if args.output_file:
+        path_to_txt = args.output_file
+        dataset.save_txt(path_to_txt)
+    else:
+        dataset.save_txt(path_to_json.replace('.json', '.txt'))
+

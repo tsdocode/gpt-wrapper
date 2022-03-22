@@ -1,18 +1,73 @@
+from ast import arg
+from ensurepip import version
 from model import GPTModel
-from dataset.squad import SquadDataset
+from dataset import GPTDataset
 from happytransformer import  GENTrainArgs
+import argparse
 
 class GPTTrainer():
-    def __init__(self, path_to_json: str, model : GPTModel) -> None:
+    def __init__(self, path_to_txt: str, model : GPTModel) -> None:
         self.model = model 
-        self.path_to_json = path_to_json
+        self.path_to_txt = path_to_txt
 
     def train(self, learning_rate: float = 5e-5, epochs = 1):
         print('Training model...')
         settings = GENTrainArgs(learning_rate=learning_rate, num_train_epochs=epochs)
-        dataset = SquadDataset(self.path_to_json)
-        path_to_txt = dataset.save_txt('./dataset/train.txt')
-        self.model.train(path_to_txt, settings)
+        self.model.train(self.path_to_txt, settings)
         print('Finished training model, you can save it now using model.save()')
 
         return self.model
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-n", "--model-version", help="Model version", type=str)
+    parser.add_argument("-e", "--epochs", help="Training epochs", type=str)
+    parser.add_argument("-l", "--learning-rate", help="Learning rate", type=str)
+    parser.add_argument("-i", "--input-data", help="Input txt dataset", type=str)
+    parser.add_argument("-o", "--output-folder", help="Output model folder", type=str)
+    
+    args = parser.parse_args()
+    
+
+    if args.input_data:
+        path_to_txt = args.input_data
+        if args.model_version:
+            model_version = args.model-version
+        else:
+            model_version = '125M'
+        if args.epochs:
+            epochs = int(args.epochs)
+        else:
+            epochs = 1
+        if args.learning_rate:
+            learning_rate = float(args.learning_rate)
+        else:
+            learning_rate = 5e-5
+        if args.output_folder:
+            path_to_output = args.output_folder
+        else:
+            path_to_output = path_to_txt.split('.')[0]
+    
+    else:
+        print('Please specify input data')
+        exit()
+    
+    print(f'Model version: {model_version}')
+    print(f'Epochs: {epochs}')
+    print(f'Learning rate: {learning_rate}')
+    print(f'Output folder: {path_to_output}')
+
+    # dataset = GPTDataset(path_to_json)
+    model = GPTModel(model_version)
+    trainer = GPTTrainer(path_to_txt, model)
+    trainer.train()
+
+
+
+
+
+
+    
+
+    
