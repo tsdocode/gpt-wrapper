@@ -1,5 +1,5 @@
-def default_preprocessing(context: str, question: str) -> str:
-    return f"context:{context} | question:{question}"
+def default_preprocessing(schema: str, question: str) -> str:
+    return f"schema:{schema} | question:{question}"
 
 def default_posprocessing(result: str) -> str:
     return result

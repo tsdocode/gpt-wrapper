@@ -58,10 +58,11 @@ if __name__ == '__main__':
     print(f'Learning rate: {learning_rate}')
     print(f'Output folder: {path_to_output}')
 
-    # dataset = GPTDataset(path_to_json)
+
     model = GPTModel(model_version)
     trainer = GPTTrainer(path_to_txt, model)
-    trainer.train()
+    model = trainer.train()
+    model.save('./saved/' + path_to_output)
 
 
 
