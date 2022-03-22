@@ -1,5 +1,6 @@
 from ast import arg
 from ensurepip import version
+from json import load
 from model import GPTModel
 from dataset import GPTDataset
 from happytransformer import  GENTrainArgs
@@ -7,6 +8,12 @@ import argparse
 
 class GPTTrainer():
     def __init__(self, path_to_txt: str, model : GPTModel) -> None:
+        """Load model and dataset for training
+
+        Args:
+            path_to_txt (str): Path to txt dataset
+            model (GPTModel): GPT-NEO version or local_path
+        """
         self.model = model 
         self.path_to_txt = path_to_txt
 
@@ -26,12 +33,16 @@ if __name__ == '__main__':
     parser.add_argument("-l", "--learning-rate", help="Learning rate", type=str)
     parser.add_argument("-i", "--input-data", help="Input txt dataset", type=str)
     parser.add_argument("-o", "--output-folder", help="Output model folder", type=str)
+    parser.add_argument("-p", "--pretrained", help="Output model folder", type=str)
     
     args = parser.parse_args()
     
+    load_path = None
 
     if args.input_data:
         path_to_txt = args.input_data
+        if args.pretrained:
+            load_path = args.pretrained
         if args.model_version:
             model_version = args.model-version
         else:
@@ -59,7 +70,7 @@ if __name__ == '__main__':
     print(f'Output folder: {path_to_output}')
 
 
-    model = GPTModel(model_version)
+    model = GPTModel(model_version, load_path)
     trainer = GPTTrainer(path_to_txt, model)
     model = trainer.train()
     model.save('./saved/' + path_to_output)

@@ -45,12 +45,14 @@ if you don't provide --output-file, file name will be the same as --input-file
 
 ## **4. Train GPT**
 ```python
-python trainer.py -i <input_data> -o <output_model_folder> -m <model_name> -e <epochs> -l <learning_rate>  
+python trainer.py -i <input_data> -o <output_model_folder> -m <model_name> -p <pretrained_model_path> -e <epochs> -l <learning_rate>  
 ```
 default:
 - model_name: 125M
 - epochs: 1
 - learning_rate: 5e-5
+
+if you want to continued training from a previous model, you can use -p to specify the path of the previous model. 
 
 ## **5. Inference**
 ```python

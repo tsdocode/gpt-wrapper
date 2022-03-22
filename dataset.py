@@ -4,7 +4,12 @@ import argparse
 
 
 class GPTDataset(object):
-    def __init__(self, path_to_json: str):
+    def __init__(self, path_to_json: str) -> None:
+        """Generate txt dataset from a json file.
+
+        Args:
+            path_to_json (str): Path to json file.
+        """
         print('Loading dataset...')
         self.json_gpt = self.load_json(path_to_json)
         # print(self.json_gpt)
@@ -13,14 +18,25 @@ class GPTDataset(object):
         with open(path_to_json, 'r') as f:
             return json.load(f)
 
-    def make_prompt(self,split_token = ' | ' ,  **kwargs):
+    def make_prompt(self,split_token = ' | ' ,  **kwargs) -> None:
+        """Make input prompt for GPT model
+
+        Args:
+            split_token (str, optional): Split symbot between two information. Ex: "question | answer". Defaults to ' | '.
+
+        """
         sos , eos = "<|startoftext|>\n" ,  "\n<|endoftext|>\n"
         
         prompt_content = split_token.join([f"{key}: {value}" \
             for key, value in kwargs.items()])
         return sos + f"{prompt_content}" + eos
     
-    def to_txt(self):
+    def to_txt(self) -> str:
+        """Convert json data to txt data.
+
+        Returns:
+            str: txt dataset
+        """
         txt_data = ""
         for sample in tqdm(self.json_gpt['data']):
             try:
@@ -31,7 +47,16 @@ class GPTDataset(object):
                 pass
         # print(txt_data[:300])
         return txt_data
-    def save_txt(self, file_name):
+
+    def save_txt(self, file_name: str) -> None:
+        """Save txt data to file
+
+        Args:
+            file_name (str): output file name
+
+        Returns:
+            None
+        """
         txt_data = self.to_txt()
         with open(file_name, 'w') as f:
             f.write(txt_data)
