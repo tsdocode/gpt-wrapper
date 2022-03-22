@@ -1,0 +1,12 @@
+{
+    "data" : [
+        {
+        "name": "Sang",
+        "type": "address"
+        },
+        {
+        "name": "Sang2",
+        "type": "uint256"
+        }
+    ]
+}

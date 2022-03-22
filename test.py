@@ -1,8 +1,5 @@
-from model import GPTModel
-from trainer import GPTTrainer
+def test(**kwargs):
+    print(kwargs)
+    # return f"{a[0]} , {a[a[0]]}"
 
-model = GPTModel()
-trainer = GPTTrainer('./dataset/squad.json', model)
-
-trained_model = trainer.train()
-trained_model.save('./first_model')
+test()
