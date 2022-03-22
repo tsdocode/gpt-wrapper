@@ -6,6 +6,7 @@
 ## **1. Installation**
 
 **1.1 Install Miniconda**
+
 Follow this [instruction](https://docs.conda.io/en/latest/miniconda.html#) to install miniconda.
 Skip it if you using Google Colab or sth else.
 
@@ -36,7 +37,7 @@ Collect and annotate your data with this format.
 
 ## **3. Turn json dataset into trainable txt**
 ```python
-python dataset.py --input_file=<input_file> --output_file=<output_file>
+python dataset.py -i <input_file> -o <output_file>
 ```
 
 if you don't provide --output-file, file name will be the same as --input-file
@@ -52,6 +53,31 @@ default:
 - learning_rate: 5e-5
 
 ## **5. Inference**
+```python
+from model import GPTModel
+
+#Define custom preprocess and postprocess
+#You can also edit default function in utils.py
+def preprocessing(schema, question):
+    #Feel free to custom input prompt
+    prompt = f"{schema} \n {question} \n"
+    return prompt
+
+def postprocessing(result):
+    return result
+
+
+text_to_sql = GPTModel(load_path='/path/to/model/')
+
+schema = ""
+question = ""
+
+SQL = text_to_sql.generate(schema, question, preprocessing, postprocessing)
+print(SQL)
+```
+
+## **5. Eval**
+Coming soon...
 
 
 
