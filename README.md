@@ -47,6 +47,7 @@ python dataset.py -i <input_file> -o <output_file>
 
 if you don't provide --output-file, file name will be the same as --input-file
 
+You can also custom txt dataset by modify **make_prompt()** function in dataset.py
 
 ## **4. Train GPT**
 ```python
