@@ -1,6 +1,3 @@
-from ast import arg
-from ensurepip import version
-from json import load
 import os
 from model import GPTModel
 from dataset import GPTDataset
