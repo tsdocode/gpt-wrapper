@@ -17,7 +17,7 @@ class GPTModel():
             model_name = f"EleutherAI/gpt-neo-{model_version}"
             self.model = HappyGeneration("GPT-NEO" , model_name)
         self.train = self.model.train
-        print('Loading model...')
+        print('Done!')
         
 
     def save(self, path_to_model: str):

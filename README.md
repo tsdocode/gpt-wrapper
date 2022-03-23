@@ -83,7 +83,7 @@ def postprocessing(result):
     return result
 
 
-text_to_sql = GPTModel(load_path='/path/to/model/')
+text_to_sql = GPTModel(model_path='/path/to/model/')
 
 schema = ""
 question = ""
