@@ -10,6 +10,14 @@
 Follow this [instruction](https://docs.conda.io/en/latest/miniconda.html#) to install miniconda.
 Skip it if you using Google Colab or sth else.
 
+If you using Google Colab, please add **!** symbol before instruction below
+
+Example:
+```python
+!pip install -r requirements.txt
+```
+
+
 **1.2 Install Library**
 ```
 git clone https://github.com/tsdocode/gpt-wrapper.git
