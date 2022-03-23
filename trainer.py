@@ -1,6 +1,7 @@
 from ast import arg
 from ensurepip import version
 from json import load
+import os
 from model import GPTModel
 from dataset import GPTDataset
 from happytransformer import  GENTrainArgs
@@ -73,7 +74,14 @@ if __name__ == '__main__':
     model = GPTModel(model_version, load_path)
     trainer = GPTTrainer(path_to_txt, model)
     model = trainer.train(learning_rate=learning_rate , epochs=epochs)
-    model.save('./saved/' + path_to_output)
+    
+    save_path = "./saved/"
+    isExist = os.path.exists(save_path)
+
+    if not isExist:
+        os.makedirs(save_path)
+
+    model.save(save_path + path_to_output)
 
 
 
