@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     model = GPTModel(model_version, load_path)
     trainer = GPTTrainer(path_to_txt, model)
-    model = trainer.train()
+    model = trainer.train(learning_rate=learning_rate , epochs=epochs)
     model.save('./saved/' + path_to_output)
 
 
