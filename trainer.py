@@ -28,7 +28,7 @@ class GPTTrainer():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-n", "--model-version", help="Model version", type=str)
+    parser.add_argument("-m", "--model-version", help="Model version", type=str)
     parser.add_argument("-e", "--epochs", help="Training epochs", type=str)
     parser.add_argument("-l", "--learning-rate", help="Learning rate", type=str)
     parser.add_argument("-i", "--input-data", help="Input txt dataset", type=str)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if args.pretrained:
             load_path = args.pretrained
         if args.model_version:
-            model_version = args.model-version
+            model_version = args.model_version
         else:
             model_version = '125M'
         if args.epochs:
