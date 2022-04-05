@@ -28,12 +28,12 @@ class OwnCloud():
                 local_path = './' + file_path.split('/')[-1]
                 success = self.oc.get_file(file_path , local_path)
                 return local_path
-            except:
-                print("Please login")
+            except Exception as e:
+                print(e)
                 return None
 
     
-    def put_file(self , local_file, remote_file):
+    def put_file(self , remote_file, local_file):
         if self.connected:
             success = self.oc.put_file(remote_file, local_file)
             return success

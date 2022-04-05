@@ -76,7 +76,6 @@ if __name__ == '__main__':
     if cloud:
         print('Using OwnCloud')
         oc = OwnCloud()
-        oc.login()
         path_to_txt = oc.load_file(path_to_txt)
 
 
