@@ -2,7 +2,10 @@ import os
 from model import GPTModel
 from dataset import GPTDataset
 from happytransformer import  GENTrainArgs
+from cloud import OwnCloud
 import argparse
+import bz2
+import shutil
 
 class GPTTrainer():
     def __init__(self, path_to_txt: str, model : GPTModel) -> None:
@@ -32,6 +35,7 @@ if __name__ == '__main__':
     parser.add_argument("-i", "--input-data", help="Input txt dataset", type=str)
     parser.add_argument("-o", "--output-folder", help="Output model folder", type=str)
     parser.add_argument("-p", "--pretrained", help="Output model folder", type=str)
+    parser.add_argument("-c", "--cloud", help="Using OwnCloud", type=bool , default= False)
     
     args = parser.parse_args()
     
@@ -57,6 +61,8 @@ if __name__ == '__main__':
             path_to_output = args.output_folder
         else:
             path_to_output = path_to_txt.split('.')[0]
+        if args.cloud:
+            cloud = args.cloud
     
     else:
         print('Please specify input data')
@@ -66,6 +72,14 @@ if __name__ == '__main__':
     print(f'Epochs: {epochs}')
     print(f'Learning rate: {learning_rate}')
     print(f'Output folder: {path_to_output}')
+
+    if cloud:
+        print('Using OwnCloud')
+        oc = OwnCloud()
+        oc.login()
+        path_to_txt = oc.load_file(path_to_txt)
+
+
 
 
     model = GPTModel(model_version, load_path)
@@ -79,6 +93,15 @@ if __name__ == '__main__':
         os.makedirs(save_path)
 
     model.save(save_path + path_to_output)
+
+
+    shutil.make_archive(path_to_output, 'bztar', save_path + path_to_output)
+
+    if cloud:
+        oc.put_file(path_to_output + '.tar.bz2', path_to_output + '.tar.bz2')
+
+
+
 
 
 

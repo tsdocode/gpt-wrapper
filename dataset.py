@@ -27,7 +27,7 @@ class GPTDataset(object):
         """
         sos , eos = "<|startoftext|>\n" ,  "\n<|endoftext|>\n"
         
-        prompt_content = split_token.join([f" {value} " \
+        prompt_content = split_token.join([f"{value}" \
             for key, value in kwargs.items()])
         return sos + f"{prompt_content}" + eos
     
