@@ -80,25 +80,26 @@ if __name__ == '__main__':
 
 
 
+    try:
+        model = GPTModel(model_version, load_path)
+        trainer = GPTTrainer(path_to_txt, model)
+        model = trainer.train(learning_rate=learning_rate , epochs=epochs)
+        
+        save_path = "./saved/"
+        isExist = os.path.exists(save_path)
 
-    model = GPTModel(model_version, load_path)
-    trainer = GPTTrainer(path_to_txt, model)
-    model = trainer.train(learning_rate=learning_rate , epochs=epochs)
+        if not isExist:
+            os.makedirs(save_path)
+
+        model.save(save_path + path_to_output)
+
+        shutil.make_archive(path_to_output, 'bztar', save_path + path_to_output)
+
+        if cloud:
+            oc.put_file(path_to_output + '.tar.bz2', path_to_output + '.tar.bz2')
     
-    save_path = "./saved/"
-    isExist = os.path.exists(save_path)
-
-    if not isExist:
-        os.makedirs(save_path)
-
-    model.save(save_path + path_to_output)
-
-
-    shutil.make_archive(path_to_output, 'bztar', save_path + path_to_output)
-
-    if cloud:
-        oc.put_file(path_to_output + '.tar.bz2', path_to_output + '.tar.bz2')
-
+    except Exception as e:
+        print(e)
 
 
 
