@@ -30,7 +30,7 @@ class GPTDataset(object):
             path_to_json = self.oc.load_file(path_to_json)
 
         with open(path_to_json, 'r') as f:
-            path_to_json = self.oc.load_file(path_to_json)
+            # path_to_json = self.oc.load_file(path_to_json)
             return json.load(f)
             
 
