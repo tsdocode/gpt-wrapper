@@ -63,6 +63,8 @@ if __name__ == '__main__':
             path_to_output = path_to_txt.split('.')[0]
         if args.cloud:
             cloud = args.cloud
+        else:
+            cloud = False
     
     else:
         print('Please specify input data')
