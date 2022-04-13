@@ -1,7 +1,12 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1QIOEfsB7DPcPRp9VX3fK2yg6atybkHvq/view?usp=sharing)
+
 # GPT Wrapper for KMS Technical Challenge
 
 > by tsdocode from CoE
 
+## Resources
+
+[Pretrained model](https://drive.google.com/drive/folders/11aWe3IZ0pfxujwzsFHwSzgJuAlPryBNs?usp=sharing)
 
 ## **1. Installation**
 
