@@ -1,0 +1,120 @@
+model:Distinct
+FILE : kmser.csv
+SCHEMA:unnamed: 0,employee_number,employee_id
+Q:hello
+A:SELECT DISTINCT UNNAMED:_0 FROM df WHERE employee_number LIKE "%Hello%" ;
+Correct : False
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email that username is sangtnguyen
+A:SELECT DISTINCT email FROM df WHERE username LIKE '%sungtnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of username sangtnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%sangtnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of username sangtnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%sangtnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of  sangtnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%sangtnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of  sangtnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%sangtnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of  thonghuynh
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%thonghuynh%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of  thonghuynh
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%thonghuynh%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of  trungnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%trungnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of user trungnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%trungnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:username,email
+Q:show email of user trungnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%trungnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of user trungnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%trungnguyen%'
+Correct : True
+
+
+model:Distinct
+FILE : kmser.csv
+SCHEMA:email,username
+Q:show email of user sangtnguyen
+A:SELECT DISTINCT username FROM df WHERE email LIKE '%sungtnguyen%'
+Correct : True
+
+
+model:baseline
+FILE : car_ad.csv
+SCHEMA:car,price,body
+Q:Show car have price over 12000
+A: DISTINCT CAR FROM df WHERE PRICE > 12000
+Correct : False
+
+
+model:baseline
+FILE : car_ad.csv
+SCHEMA:car,price,body
+Q:Show car have price over 12000
+A:SELECT  DISTINCT CAR FROM df WHERE PRICE > 12000
+Correct : True
+
+
