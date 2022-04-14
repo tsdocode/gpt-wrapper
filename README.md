@@ -14,6 +14,8 @@ Use KMS email to access resources
 
 [Sample Dataset](https://drive.google.com/drive/folders/1eQ6T2AGa5-1UXZfNwE3HdrOpWwXZKttu?usp=sharing)
 
+Checkout [FastAPIxStreamlit](https://github.com/tsdocode/GPT-Example) example
+
 
 
 ## **1. Installation**
