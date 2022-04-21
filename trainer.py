@@ -98,7 +98,7 @@ if __name__ == '__main__':
         shutil.make_archive(save_path + path_to_output, 'bztar', save_path + path_to_output)
 
         if cloud:
-            oc.put_file(path_to_output + '.tar.bz2', path_to_output + '.tar.bz2')
+            oc.put_file(save_path + path_to_output + '.tar.bz2', path_to_output + '.tar.bz2')
     
     except Exception as e:
         print(e)
