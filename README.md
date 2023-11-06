@@ -1,21 +1,8 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QIOEfsB7DPcPRp9VX3fK2yg6atybkHvq#scrollTo=Bsy56wuXOPg1)
-
-# GPT Wrapper for KMS Technical Challenge
+# Text to SQL Example
 
 > by tsdocode from CoE
 
 ![](./assets/pipeline.png)
-
-
-## Resources
-Use KMS email to access resources
-
-[Pretrained model](https://drive.google.com/drive/folders/11aWe3IZ0pfxujwzsFHwSzgJuAlPryBNs?usp=sharing)
-
-[Sample Dataset](https://drive.google.com/drive/folders/1eQ6T2AGa5-1UXZfNwE3HdrOpWwXZKttu?usp=sharing)
-
-Checkout [FastAPIxStreamlit](https://github.com/tsdocode/GPT-Example) example
-
 
 
 ## **1. Installation**
